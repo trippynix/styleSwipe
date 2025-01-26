@@ -1,6 +1,6 @@
 import {
-  DarkTheme,
-  DefaultTheme,
+  DarkTheme as NavigationDarkTheme,
+  DefaultTheme as NavigationDefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
@@ -13,6 +13,22 @@ import { SafeAreaView, StyleSheet, useColorScheme } from "react-native";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+
+const CustomLightTheme = {
+  ...NavigationDefaultTheme,
+  colors: {
+    ...NavigationDefaultTheme.colors,
+    background: "#FFFFFF",
+  },
+};
+
+const CustomDarkTheme = {
+  ...NavigationDarkTheme,
+  colors: {
+    ...NavigationDarkTheme.colors,
+    background: "#000000",
+  },
+};
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -30,14 +46,13 @@ export default function RootLayout() {
     return null;
   }
 
-  const backgroundColor =
-    colorScheme === "dark"
-      ? DarkTheme.colors.background
-      : DefaultTheme.colors.background;
+  const backgroundColor = colorScheme === "dark" ? "#000000" : "#FFFFFF";
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor }]}>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+      <ThemeProvider
+        value={colorScheme === "dark" ? CustomDarkTheme : CustomLightTheme}
+      >
         <StatusBar
           style={colorScheme === "dark" ? "light" : "dark"}
           backgroundColor={backgroundColor}
