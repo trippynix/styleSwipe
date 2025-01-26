@@ -7,12 +7,12 @@ export default function optionsLayout() {
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="options/Settings" options={{ headerShown: true }} />
-      <Stack.Screen name="options/Wishlist" options={{ headerShown: false }} />
+      <Stack.Screen name="options/Wishlist" options={{ headerShown: true }} />
       <Stack.Screen
         name="options/TellFriends"
-        options={{ headerShown: false }}
+        options={{ headerShown: true }}
       />
-      <Stack.Screen name="options/Orders" options={{ headerShown: false }} />
+      <Stack.Screen name="options/Orders" options={{ headerShown: true }} />
     </Stack>
   );
 }

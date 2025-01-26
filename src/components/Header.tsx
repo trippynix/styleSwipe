@@ -9,7 +9,7 @@ import {
   Pressable,
 } from "react-native";
 import React, { useState } from "react";
-import FilterIcon from "../../assets/icons/filter.svg";
+import FilterIcon from "../assets/icons/filter.svg";
 import { useFonts } from "expo-font";
 import { Link } from "expo-router";
 import FilterModal from "../components/FilterModal"; // Import the modal
@@ -21,7 +21,7 @@ export default function Header() {
   const headerColorScheme = useColorScheme();
   const headerIsDarkMode = headerColorScheme === "dark";
   const [fontsLoaded] = useFonts({
-    ZenTokyo: require("../../assets/fonts/ZenTokyoZoo-Regular.ttf"),
+    ZenTokyo: require("../assets/fonts/ZenTokyoZoo-Regular.ttf"),
   });
 
   if (!fontsLoaded) {
