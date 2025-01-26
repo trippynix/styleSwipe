@@ -8,23 +8,23 @@ import {
   Text,
   Pressable,
 } from "react-native";
-import React from "react";
-import FilterIcon from "../assets/icons/filter.svg";
+import React, { useState } from "react";
+import FilterIcon from "../../assets/icons/filter.svg";
 import { useFonts } from "expo-font";
 import { Link } from "expo-router";
-import Filter from "./Filter";
+import FilterModal from "../components/FilterModal"; // Import the modal
 
 const { width, height } = Dimensions.get("screen");
 
 export default function Header() {
+  const [showModal, setShowModal] = useState(false); // State to control modal visibility
   const headerColorScheme = useColorScheme();
   const headerIsDarkMode = headerColorScheme === "dark";
   const [fontsLoaded] = useFonts({
-    ZenTokyo: require("../assets/fonts/ZenTokyoZoo-Regular.ttf"),
+    ZenTokyo: require("../../assets/fonts/ZenTokyoZoo-Regular.ttf"),
   });
 
   if (!fontsLoaded) {
-    // Render null or a loading placeholder until the font is loaded
     return null;
   }
 
@@ -59,23 +59,20 @@ export default function Header() {
           </Text>
         </View>
       </View>
-      <Link style={styles.filters} href="../components/Filter" asChild>
-        <Pressable>
-          {({ pressed }) => (
-            <View>
-              <FilterIcon
-                height={height * 0.035}
-                width={width * 0.35}
-                fill={headerIsDarkMode ? "#FFFFFF" : "#000000"}
-                style={{ opacity: pressed ? 0.5 : 1 }}
-              />
-            </View>
-          )}
-        </Pressable>
-      </Link>
+      <Pressable onPress={() => setShowModal(true)} style={styles.filters}>
+        <FilterIcon
+          height={height * 0.035}
+          width={width * 0.35}
+          fill={headerIsDarkMode ? "#FFFFFF" : "#000000"}
+        />
+      </Pressable>
+
+      {/* Show the Filter Modal when showModal is true */}
+      {showModal && <FilterModal setShowModal={setShowModal} />}
     </SafeAreaView>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",

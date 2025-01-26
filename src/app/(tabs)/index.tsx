@@ -8,7 +8,10 @@ import {
   SafeAreaView,
 } from "react-native";
 import React from "react";
+import { SvgProps } from "react-native-svg";
 import LocationIcon from "../../assets/icons/website_location_icon.svg";
+import FilterModal from "@/src/components/FilterModal";
+import Header from "@/src/components/Header";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -17,6 +20,7 @@ const SwipeCard = () => {
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
       <View style={styles.card}>
+        <Header />
         <ImageBackground
           source={require("../../assets/images/3f8cea88382f4a38aaaa8b735fce6b1e_w1440_q90.webp")}
           style={styles.image}

@@ -10,25 +10,10 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import React from "react";
 import { SafeAreaView, StyleSheet, useColorScheme } from "react-native";
+import { CustomLightTheme, CustomDarkTheme } from "../utils/theme";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
-
-const CustomLightTheme = {
-  ...NavigationDefaultTheme,
-  colors: {
-    ...NavigationDefaultTheme.colors,
-    background: "#FFFFFF",
-  },
-};
-
-const CustomDarkTheme = {
-  ...NavigationDarkTheme,
-  colors: {
-    ...NavigationDarkTheme.colors,
-    background: "#000000",
-  },
-};
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();

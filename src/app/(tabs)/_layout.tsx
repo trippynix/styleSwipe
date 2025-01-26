@@ -12,10 +12,11 @@ import ProfileIcon from "../../assets/icons/Profile";
 import LikedIcon from "../../assets/icons/Liked.svg";
 import DislikedIcon from "../../assets/icons/Disliked.svg";
 import { useFonts } from "expo-font";
+import TabBarIcon from "@/src/components/TabBarIcon";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  const { width, height } = Dimensions.get("screen");
+
   const isDarkMode = colorScheme === "dark";
   const [fontsLoaded] = useFonts({
     ZenTokyo: require("../../assets/fonts/ZenTokyoZoo-Regular.ttf"),
@@ -63,7 +64,7 @@ export default function TabLayout() {
           name="index"
           options={{
             title: "StyleSwipe",
-            header: () => <Header />,
+            headerShown: false,
             tabBarIcon: ({ focused }) => (
               <Text
                 style={{
@@ -90,18 +91,12 @@ export default function TabLayout() {
         <Tabs.Screen
           name="Liked"
           options={{
-            header: () => <Header />,
+            headerShown: false,
             tabBarIcon: ({ focused }) => (
-              <LikedIcon
-                height={height * 0.035}
-                width={width * 0.35}
-                fill={
-                  focused && isDarkMode
-                    ? "#FFFFFF"
-                    : focused && !isDarkMode
-                    ? "#000000"
-                    : "#777F89"
-                }
+              <TabBarIcon
+                Icon={LikedIcon}
+                focused={focused}
+                isDarkMode={isDarkMode}
               />
             ),
           }}
@@ -109,18 +104,12 @@ export default function TabLayout() {
         <Tabs.Screen
           name="Disliked"
           options={{
-            header: () => <Header />,
+            headerShown: false,
             tabBarIcon: ({ focused }) => (
-              <DislikedIcon
-                height={height * 0.035}
-                width={width * 0.35}
-                fill={
-                  focused && isDarkMode
-                    ? "#FFFFFF"
-                    : focused && !isDarkMode
-                    ? "#000000"
-                    : "#777F89"
-                }
+              <TabBarIcon
+                Icon={DislikedIcon}
+                focused={focused}
+                isDarkMode={isDarkMode}
               />
             ),
           }}
@@ -128,18 +117,12 @@ export default function TabLayout() {
         <Tabs.Screen
           name="Profile"
           options={{
-            header: () => <Header />,
+            headerShown: false,
             tabBarIcon: ({ focused }) => (
-              <ProfileIcon
-                height={height * 0.035}
-                width={width * 0.35}
-                fill={
-                  focused && isDarkMode
-                    ? "#FFFFFF"
-                    : focused && !isDarkMode
-                    ? "#000000"
-                    : "#777F89"
-                }
+              <TabBarIcon
+                Icon={ProfileIcon}
+                focused={focused}
+                isDarkMode={isDarkMode}
               />
             ),
           }}
