@@ -7,52 +7,55 @@ import {
   Dimensions,
   SafeAreaView,
 } from "react-native";
-import React from "react";
+import React, { useState, useContext } from "react";
 import { SvgProps } from "react-native-svg";
-import LocationIcon from "../../assets/icons/website_location_icon.svg";
+import LocationIcon from "../../assets/icons/website_location_icon";
 import FilterModal from "@/src/components/FilterModal";
 import Header from "@/src/components/Header";
+import { ModalProvider } from "../../utils/ContextProvider/ModalState";
 
 const { width, height } = Dimensions.get("screen");
 
 const SwipeCard = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar style="auto" />
-      <View style={styles.card}>
-        <Header />
-        <ImageBackground
-          source={require("../../assets/images/3f8cea88382f4a38aaaa8b735fce6b1e_w1440_q90.webp")}
-          style={styles.image}
-        >
-          <View style={styles.rectangleName}>
-            <Text
-              style={{
-                fontFamily: "KohSantepheap-Regular",
-                color: "#fff",
-                fontSize: width * 0.04,
-              }}
-            >
-              Shimmer Cocktail Dress
-            </Text>
-          </View>
-          <View style={styles.rectangleWeb}>
-            <Text
-              style={{
-                fontFamily: "KohSantepheap-Regular",
-                color: "#fff",
-                fontSize: width * 0.025,
-              }}
-            >
-              Urbanic
-            </Text>
-          </View>
-          <View style={styles.locationIcon}>
-            <LocationIcon height={height * 0.04} width={width * 0.06} />
-          </View>
-        </ImageBackground>
-      </View>
-    </SafeAreaView>
+    <ModalProvider>
+      <SafeAreaView style={styles.container}>
+        <StatusBar style="auto" />
+        <View style={styles.card}>
+          <Header />
+          <ImageBackground
+            source={require("../../assets/images/3f8cea88382f4a38aaaa8b735fce6b1e_w1440_q90.webp")}
+            style={styles.image}
+          >
+            <View style={styles.rectangleName}>
+              <Text
+                style={{
+                  fontFamily: "KohSantepheap-Regular",
+                  color: "#fff",
+                  fontSize: width * 0.04,
+                }}
+              >
+                Shimmer Cocktail Dress
+              </Text>
+            </View>
+            <View style={styles.rectangleWeb}>
+              <Text
+                style={{
+                  fontFamily: "KohSantepheap-Regular",
+                  color: "#fff",
+                  fontSize: width * 0.025,
+                }}
+              >
+                Urbanic
+              </Text>
+            </View>
+            <View style={styles.locationIcon}>
+              <LocationIcon height={height * 0.04} width={width * 0.06} />
+            </View>
+          </ImageBackground>
+        </View>
+      </SafeAreaView>
+    </ModalProvider>
   );
 };
 

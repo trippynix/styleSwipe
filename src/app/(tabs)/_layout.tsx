@@ -9,8 +9,8 @@ import {
 } from "react-native";
 import Header from "../../components/Header";
 import ProfileIcon from "../../assets/icons/Profile";
-import LikedIcon from "../../assets/icons/Liked.svg";
-import DislikedIcon from "../../assets/icons/Disliked.svg";
+import LikedIcon from "../../assets/icons/Liked";
+import DislikedIcon from "../../assets/icons/Disliked";
 import { useFonts } from "expo-font";
 import TabBarIcon from "@/src/components/TabBarIcon";
 
